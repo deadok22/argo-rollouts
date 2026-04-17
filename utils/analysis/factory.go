@@ -40,6 +40,16 @@ func BuildArgumentsForRolloutAnalysisRun(args []v1alpha1.AnalysisRunArgument, st
 					// returned error will only be used in Analysis stage
 					value, err = extractValueFromRollout(r, arg.ValueFrom.FieldRef.FieldPath)
 				}
+			} else if arg.ValueFrom.StableRSFieldRef != nil {
+				value, err = fieldpath.ExtractFieldPathAsString(stableRS, arg.ValueFrom.StableRSFieldRef.FieldPath)
+				if err != nil {
+					return nil, err
+				}
+			} else if arg.ValueFrom.LatestRSFieldRef != nil {
+				value, err = fieldpath.ExtractFieldPathAsString(newRS, arg.ValueFrom.LatestRSFieldRef.FieldPath)
+				if err != nil {
+					return nil, err
+				}
 			}
 		}
 

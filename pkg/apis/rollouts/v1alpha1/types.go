@@ -818,6 +818,9 @@ type ArgumentValueFrom struct {
 	PodTemplateHashValue *ValueFromPodTemplateHash `json:"podTemplateHashValue,omitempty" protobuf:"bytes,1,opt,name=podTemplateHashValue,casttype=ValueFromPodTemplateHash"`
 	//FieldRef
 	FieldRef *FieldRef `json:"fieldRef,omitempty" protobuf:"bytes,2,opt,name=fieldRef"`
+
+	StableRSFieldRef *FieldRef `json:"stableRSFieldRef,omitempty" protobuf:"bytes,3,opt,name=stableRSFieldRef"`
+	LatestRSFieldRef *FieldRef `json:"latestRSFieldRef,omitempty" protobuf:"bytes,4,opt,name=latestRSFieldRef"`
 }
 
 type FieldRef struct {
